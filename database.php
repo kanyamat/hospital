@@ -4,7 +4,7 @@ $dbconn = pg_pconnect($conn_string);
 if (!$dbconn) {
     die("Connection failed: " . mysqli_connect_error());
 }
-
+########################CREATE TABLE #######################################################
 $sql="CREATE TABLE sequents(
 id SERIAL,
 seqcode varchar(255),

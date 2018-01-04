@@ -1,4 +1,12 @@
 <?php
+
+$conn_string = "host=ec2-54-227-247-225.compute-1.amazonaws.com port=5432 dbname=d7i9sj05534uua user=twyavrmgujwujj password=78cac0794ff9469d19800c70521b078dd1e2505ebf978e4239f7f7393d3916a8";
+$dbconn = pg_pconnect($conn_string);
+if (!$dbconn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+
 $access_token = '2MD4waeOjAyBl8vV/r60JwXzouAjGDB5n6QFwLrfRVLXSlf0nfkIA861nwGiGYCTMo9zKsd0fAFqoUb+8E0j1FL6tioXbgrXusCgfacGVtxwbtD4n0GhuRSl0rfkt0VCVsgremd9z3nXhEMdGn5ZJgdB04t89/1O/w1cDnyilFU=';
 
 

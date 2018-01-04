@@ -5,6 +5,7 @@ if (!$dbconn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 ########################CREATE TABLE #######################################################
+
 $sql="CREATE TABLE sequents(
 id SERIAL,
 seqcode varchar(255),
@@ -14,7 +15,7 @@ nexttype integer,
 nextseqcode varchar(255),
 created_at timestamp,
 updated_at timestamp,
-deleted_at timestamp
+deleted_at timestamp,
 PRIMARY KEY(id)
 )";   
 pg_exec($dbconn, $sql) or die(pg_errormessage());

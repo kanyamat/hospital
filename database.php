@@ -20,18 +20,19 @@ if (!$dbconn) {
 // )";   
 // pg_exec($dbconn, $sql) or die(pg_errormessage());
 
-// $sql2="CREATE TABLE sequentsteps(
-// id SERIAL,
-// sender_id varchar(50),
-// seqcode varchar(30),
-// answer varchar(255),
-// nextseqcode varchar(255),
-// status varchar(255),
-// created_at timestamp,
-// updated_at timestamp,
-// PRIMARY KEY(id)
-// )";   
-// pg_exec($dbconn, $sql2) or die(pg_errormessage());
+$sql2="CREATE TABLE sequentsteps(
+id SERIAL,
+sender_id varchar(50),
+seqcode varchar(30),
+answer varchar(255),
+nextseqcode varchar(255),
+status varchar(255),
+created_at timestamp,
+updated_at timestamp,
+deleted_at timestamp,
+PRIMARY KEY(id)
+)";   
+pg_exec($dbconn, $sql2) or die(pg_errormessage());
 
 
 

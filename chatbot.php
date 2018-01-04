@@ -66,7 +66,21 @@ if (!is_null($events['events'])) {
 
  $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0001','','0002','0',NOW(),NOW())") or die(pg_errormessage());
 
+########################################################################################################### 
+}elseif($event['message']['text'] == "Clear" ){
+      $replyToken = $event['replyToken'];
+      $text = "cleared!";
+      $messages = [
+          'type' => 'text',
+          'text' => $text
+        ]; 
+    //$sql =pg_exec($dbconn,"DELETE FROM users_register WHERE user_id = '{$user_id}' ");
+    //$sql1 =pg_exec($dbconn,"DELETE FROM recordofpregnancy WHERE user_id = '{$user_id}' ");
+    $sql2 =pg_exec($dbconn,"DELETE FROM sequentsteps WHERE sender_id = '{$user_id}' ");
+    //$sql3 =pg_exec($dbconn,"DELETE FROM tracker WHERE user_id = '{$user_id}' ");
+    //$sql4 =pg_exec($dbconn,"DELETE FROM auto_reply WHERE sender_id = '{$user_id}' ");
 
+###########################################################################################################    
 }else {
     // if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
       $replyToken = $event['replyToken'];
@@ -75,14 +89,12 @@ if (!is_null($events['events'])) {
           'type' => 'text',
           'text' => $text
         ]; 
-  }
+}
   
   
  }
 }
-
-####################################  insert data to sequentsteps   ####################################
- // Make a POST Request to Messaging API to reply to sender
+  // Make a POST Request to Messaging API to reply to sender
          $url = 'https://api.line.me/v2/bot/message/reply';
          // $url2 = 'https://api.line.me/v2/bot/message/reply';
          $data = [

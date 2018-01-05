@@ -6,14 +6,13 @@ if (!$dbconn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 ##############################################################################
-
-$access_token = '2MD4waeOjAyBl8vV/r60JwXzouAjGDB5n6QFwLrfRVLXSlf0nfkIA861nwGiGYCTMo9zKsd0fAFqoUb+8E0j1FL6tioXbgrXusCgfacGVtxwbtD4n0GhuRSl0rfkt0VCVsgremd9z3nXhEMdGn5ZJgdB04t89/1O/w1cDnyilFU=';
-
-
+$access_token = 'fDuoSljque+ahJROjBOPaqgXpBTrTTSOKC++vcBs32i6vOVymwyhJOYaL/6Ei1xJMo9zKsd0fAFqoUb+8E0j1FL6tioXbgrXusCgfacGVtzSFw6j5jpkyJgL8+cGpOojvmPL7zeINwCcpjm+FIayRgdB04t89/1O/w1cDnyilFU=
+';
 $content = file_get_contents('php://input');
 // Parse JSON
 $events = json_decode($content, true);
-
+//$curr_years = date("Y");
+//$curr_y = ($curr_years+ 543);
 $_msg = $events['events'][0]['message']['text'];
 $user = $events['events'][0]['source']['userId'];
 $user_id = pg_escape_string($user);
@@ -34,9 +33,7 @@ if (!is_null($events['events'])) {
  foreach ($events['events'] as $event) {
   // Reply only when message sent is in 'text' format
   // if ($event['message']['text'] == "ต้องการผู้ช่วย") {
-
  if (strpos($_msg, 'hello') !== false || strpos($_msg, 'สวัสดี') !== false || strpos($_msg, 'ต้องการผู้ช่วย') !== false) {
-
       $replyToken = $event['replyToken'];
       $text = "สวัสดีค่ะ คุณสนใจมีผู้ช่วยใช่ไหม";
       // $messages = [
@@ -63,25 +60,11 @@ if (!is_null($events['events'])) {
             ]
         ]
     ];
-
- // $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0001','','0002','0',NOW(),NOW())") or die(pg_errormessage());
-
-########################################################################################################### 
-}elseif($event['message']['text'] == "Clear" ){
-      $replyToken = $event['replyToken'];
-      $text = "cleared!";
-      $messages = [
-          'type' => 'text',
-          'text' => $text
-        ]; 
-    //$sql =pg_exec($dbconn,"DELETE FROM users_register WHERE user_id = '{$user_id}' ");
-    //$sql1 =pg_exec($dbconn,"DELETE FROM recordofpregnancy WHERE user_id = '{$user_id}' ");
-    $sql2 =pg_exec($dbconn,"DELETE FROM sequentsteps WHERE sender_id = '{$user_id}' ");
-    //$sql3 =pg_exec($dbconn,"DELETE FROM tracker WHERE user_id = '{$user_id}' ");
-    //$sql4 =pg_exec($dbconn,"DELETE FROM auto_reply WHERE sender_id = '{$user_id}' ");
-
-###########################################################################################################    
-}else {
+####################################  insert data to sequentsteps   ####################################
+ //$q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0004','','0005','0',NOW(),NOW())") or die(pg_errormessage());
+                   
+########################################################################################################################################################
+  }else {
     // if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
       $replyToken = $event['replyToken'];
       $text = "ดิฉันไม่เข้าใจค่ะ กรุณาพิมพ์ใหม่อีกครั้งนะคะ";
@@ -89,7 +72,33 @@ if (!is_null($events['events'])) {
           'type' => 'text',
           'text' => $text
         ]; 
-}
+    // }
+/*หากคุณสนใจให้ดิฉันเป็นผู้ช่วยอัตโนมัติของคุณ กรุณาพิมพ์ว่า "สนใจ" ได้เลยนะคะ*/
+ //   $replyToken = $event['replyToken'];
+ //      $text = "หากคุณสนใจให้ดิฉันเป็นผู้ช่วยอัตโนมัติของคุณ โปรดกดยืนยันด้านล่างด้วยนะคะ";
+ //          $messages = [
+ //                 'type' => 'template',
+ //                  'altText' => 'this is a confirm template',
+ //                  'template' => [
+ //                      'type' => 'confirm',
+ //                      'text' => $text ,
+ //                      'actions' => [
+ //                          [
+ //                              'type' => 'message',
+ //                              'label' => 'สนใจ',
+ //                              'text' => 'สนใจ'
+ //                          ],
+ //                          [
+ //                              'type' => 'message',
+ //                              'label' => 'ไม่สนใจ',
+ //                              'text' => 'ไม่สนใจ'
+ //                          ]
+ //                      ]
+ //                  ]
+ //              ]; 
+ // $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0004','','0005','0',NOW(),NOW())") or die(pg_errormessage());
+       
+  }
   
   
  }
@@ -114,5 +123,4 @@ if (!is_null($events['events'])) {
          $result = curl_exec($ch);
          curl_close($ch);
          echo $result . "\r\n";
-
 ?>

@@ -138,7 +138,7 @@ $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseq
 
 ##################################################################################################################################################
 
-}elseif ($event['message']['text'] == "ใช่" && $seqcode == "0003"  ) {
+}elseif ($event['message']['text'] == "1" && $seqcode == "0003"  ) {
                $result = pg_query($dbconn,"SELECT seqcode,question FROM sequents WHERE seqcode = '0003'");
                 while ($row = pg_fetch_row($result)) {
                   echo $seqcode =  $row[0];

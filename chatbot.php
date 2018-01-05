@@ -36,30 +36,30 @@ if (!is_null($events['events'])) {
  if (strpos($_msg, 'hello') !== false || strpos($_msg, 'สวัสดี') !== false || strpos($_msg, 'ต้องการผู้ช่วย') !== false) {
       $replyToken = $event['replyToken'];
       $text = "สวัสดีค่ะ คุณสนใจมีผู้ช่วยใช่ไหม";
-      // $messages = [
-      //   'type' => 'text',
-      //   'text' => $text
-      // ];
-        $messages = [
-       'type' => 'template',
-        'altText' => 'this is a confirm template',
-        'template' => [
-            'type' => 'confirm',
-            'text' => $text ,
-            'actions' => [
-                [
-                    'type' => 'message',
-                    'label' => 'สนใจ',
-                    'text' => 'สนใจ'
-                ],
-                [
-                    'type' => 'message',
-                    'label' => 'ไม่สนใจ',
-                    'text' => 'ไม่สนใจ'
-                ],
-            ]
-        ]
-    ];
+      $messages = [
+        'type' => 'text',
+        'text' => $text
+      ];
+    //     $messages = [
+    //    'type' => 'template',
+    //     'altText' => 'this is a confirm template',
+    //     'template' => [
+    //         'type' => 'confirm',
+    //         'text' => $text ,
+    //         'actions' => [
+    //             [
+    //                 'type' => 'message',
+    //                 'label' => 'สนใจ',
+    //                 'text' => 'สนใจ'
+    //             ],
+    //             [
+    //                 'type' => 'message',
+    //                 'label' => 'ไม่สนใจ',
+    //                 'text' => 'ไม่สนใจ'
+    //             ],
+    //         ]
+    //     ]
+    // ];
 ####################################  insert data to sequentsteps   ####################################
  //$q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0004','','0005','0',NOW(),NOW())") or die(pg_errormessage());
                    

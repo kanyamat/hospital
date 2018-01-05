@@ -90,18 +90,18 @@ $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseq
                         'actions'=> [
                             [
                               'type'=> 'message',
-                              'label'=> '1',
-                              'text'=> 'ใช่'
+                              'label'=> 'ใช่',
+                              'text'=> '1'
                             ],
                             [
                               'type'=> 'message',
-                              'label'=> '2',
-                              'text'=> 'ไม่ใช่'
+                              'label'=> 'ไม่ใช่',
+                              'text'=> '2'
                             ],
                             [
                               'type'=> 'message',
-                              'label'=> '3',
-                              'text'=> 'ไม่แน่ใจ'
+                              'label'=> 'ไม่แน่ใจ',
+                              'text'=> '3'
                             ]
                         ]
                     ]

@@ -64,21 +64,24 @@ $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseq
 ##################################################################################################################################################
  
 }elseif ($event['message']['text'] == "ขอนัดกลืนแร่" && $seqcode == "0001"  ) {
-               $result = pg_query($dbconn,"SELECT answer FROM sequentsteps  WHERE sender_id = '{$user_id}'  order by updated_at desc limit 1   ");
+               $result = pg_query($dbconn,"SELECT seqcode,question FROM sequents WHERE seqcode = '0002'");
                 while ($row = pg_fetch_row($result)) {
-                  echo $answer = $row[0]; 
-                }  
-
-                $quest = pg_query($dbconn,"SELECT question FROM sequents WHERE seqcode = '0002' ");
-                while ($row = pg_fetch_row($result)) {
-                  echo $que = $row[0]; 
-                }  
+                  echo $seqcode =  $row[0];
+                  echo $question = $row[1]; 
+                }   
 
                  $replyToken = $event['replyToken'];
                  $messages = [
                         'type' => 'text',
-                        'text' =>  $que
+                        'text' =>  $question
                       ];
+ 
+
+                 // $replyToken = $event['replyToken'];
+                 // $messages = [
+                 //        'type' => 'text',
+                 //        'text' =>  $que
+                 //      ];
 
                 // $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0005','','0006','0',NOW(),NOW())") or die(pg_errormessage());
 

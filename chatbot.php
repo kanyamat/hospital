@@ -6,8 +6,7 @@ if (!$dbconn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 ##############################################################################
-$access_token = 'X8ZPAwTyBxGjoLM1gelIBKpSXjMlmHOVUyRxe5K0suVS5D3BoPdl2OZZkPRiQih5Mo9zKsd0fAFqoUb+8E0j1FL6tioXbgrXusCgfacGVty5mH62yH0De2TsPUUAb53pTWzsnLMTUnI0cM96J7oY0AdB04t89/1O/w1cDnyilFU=
-';
+$access_token = 'X8ZPAwTyBxGjoLM1gelIBKpSXjMlmHOVUyRxe5K0suVS5D3BoPdl2OZZkPRiQih5Mo9zKsd0fAFqoUb+8E0j1FL6tioXbgrXusCgfacGVty5mH62yH0De2TsPUUAb53pTWzsnLMTUnI0cM96J7oY0AdB04t89/1O/w1cDnyilFU=';
 $content = file_get_contents('php://input');
 // Parse JSON
 $events = json_decode($content, true);
@@ -17,7 +16,7 @@ $_msg = $events['events'][0]['message']['text'];
 $user = $events['events'][0]['source']['userId'];
 $user_id = pg_escape_string($user);
 $u = pg_escape_string($_msg);  
-$check_q = pg_query($dbconn,"SELECT seqcode, sender_id ,updated_at  FROM sequentsteps  WHERE sender_id = '{$user_id}'  order by updated_at desc limit 1   ");
+$check_q = pg_query($dbconn,"SELECT seqcode, sender_id ,updated_at  FROM sequentsteps  WHERE sender_id = '{$user_id}'  order by updated_at desc limit 1 ");
                 while ($row = pg_fetch_row($check_q)) {
                   echo $seqcode =  $row[0];
                   echo $sender = $row[2]; 

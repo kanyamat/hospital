@@ -63,10 +63,6 @@ if (!is_null($events['events'])) {
 ####################################  insert data to sequentsteps   ####################################
  //$q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0004','','0005','0',NOW(),NOW())") or die(pg_errormessage());
                    
-<<<<<<< HEAD
-=======
-
->>>>>>> a0e5af58de5527d67b3386c29cc8ac322cd03f84
 ########################################################################################################################################################
   }else {
     // if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
@@ -127,8 +123,5 @@ if (!is_null($events['events'])) {
          $result = curl_exec($ch);
          curl_close($ch);
          echo $result . "\r\n";
-<<<<<<< HEAD
+
 ?>
-=======
-?>
->>>>>>> a0e5af58de5527d67b3386c29cc8ac322cd03f84

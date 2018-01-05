@@ -62,18 +62,6 @@ if (!is_null($events['events'])) {
 $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0001','','0002','0',NOW(),NOW())") or die(pg_errormessage());
 
 ##################################################################################################################################################
-}elseif ($event['message']['text'] == "ใช่" && $seqcode == "0003"  ) {
-               $result = pg_query($dbconn,"SELECT seqcode,question FROM sequents WHERE seqcode = '0003'");
-                while ($row = pg_fetch_row($result)) {
-                  echo $seqcode =  $row[0];
-                  echo $question = $row[1]; 
-                }   
-
-                $replyToken = $event['replyToken'];
-                 $messages = [
-                        'type' => 'text',
-                        'text' =>  $question
-                      ];
  
 }elseif ($event['message']['text'] == "ขอนัดกลืนแร่" && $seqcode == "0001"  ) {
                $result = pg_query($dbconn,"SELECT seqcode,question FROM sequents WHERE seqcode = '0002'");
@@ -120,7 +108,7 @@ $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseq
                   ];
 
 
-$q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0002','','0003','0',NOW(),NOW())") or die(pg_errormessage());
+//$q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0002','','0003','0',NOW(),NOW())") or die(pg_errormessage());
 
 
 
@@ -150,6 +138,18 @@ $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseq
 
 ##################################################################################################################################################
 
+}elseif ($event['message']['text'] == "ใช่" && $seqcode == "0003"  ) {
+               $result = pg_query($dbconn,"SELECT seqcode,question FROM sequents WHERE seqcode = '0003'");
+                while ($row = pg_fetch_row($result)) {
+                  echo $seqcode =  $row[0];
+                  echo $question = $row[1]; 
+                }   
+
+                $replyToken = $event['replyToken'];
+                 $messages = [
+                        'type' => 'text',
+                        'text' =>  $question
+                      ];
 
 
 

@@ -108,7 +108,7 @@ $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseq
                   ];
 
 
-$q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0002','','0003','0',NOW(),NOW())") or die(pg_errormessage());
+$q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0002','','0000','0',NOW(),NOW())") or die(pg_errormessage());
 
 
 
@@ -151,12 +151,44 @@ $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseq
                         'text' =>  $question
                       ];
 
+$q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0009','','0011','0',NOW(),NOW())") or die(pg_errormessage());
 
 
+##################################################################################################################################################
 
+}elseif ($event['message']['text'] == "2" && $seqcode == "0002"  ) {
+               $result = pg_query($dbconn,"SELECT seqcode,question FROM sequents WHERE seqcode = '0003'");
+                while ($row = pg_fetch_row($result)) {
+                  echo $seqcode =  $row[0];
+                  echo $question = $row[1]; 
+                }   
 
+                $replyToken = $event['replyToken'];
+                 $messages = [
+                        'type' => 'text',
+                        'text' =>  $question
+                      ];
 
+$q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0003','','0000','0',NOW(),NOW())") or die(pg_errormessage());
 
+##################################################################################################################################################
+
+}elseif ($event['message']['text'] == "3" && $seqcode == "0002"  ) {
+               $result = pg_query($dbconn,"SELECT seqcode,question FROM sequents WHERE seqcode = '0005'");
+                while ($row = pg_fetch_row($result)) {
+                  echo $seqcode =  $row[0];
+                  echo $question = $row[1]; 
+                }   
+
+                $replyToken = $event['replyToken'];
+                 $messages = [
+                        'type' => 'text',
+                        'text' =>  $question
+                      ];
+
+$q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0000','','0000','0',NOW(),NOW())") or die(pg_errormessage());
+
+##################################################################################################################################################
 
 
 

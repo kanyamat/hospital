@@ -89,28 +89,24 @@ $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseq
                         'text'=> 'Please select',
                         'actions'=> [
                             [
-                              'type'=> 'postback',
-                              'label'=> 'Buy',
-                              'data'=> 'action=buy&itemid=123'
+                              'type'=> 'message',
+                              'label'=> '1',
+                              'data'=> 'ใช่'
                             ],
                             [
-                              'type'=> 'postback',
-                              'label'=> 'Add to cart',
-                              'data'=> 'action=add&itemid=123'
+                              'type'=> 'message',
+                              'label'=> '2',
+                              'data'=> 'ไม่ใช่'
                             ],
                             [
-                              'type'=> 'uri',
-                              'label'=> 'View detail',
-                              'uri'=> 'http://example.com/page/123'
+                              'type'=> 'message',
+                              'label'=> '3',
+                              'uri'=> 'ไม่แน่ใจ'
                             ]
                         ]
                     ]
                   ];
-                 // $replyToken = $event['replyToken'];
-                 // $messages = [
-                 //        'type' => 'text',
-                 //        'text' =>  $que
-                 //      ];
+
 
                 // $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0005','','0006','0',NOW(),NOW())") or die(pg_errormessage());
 

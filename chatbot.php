@@ -17,11 +17,11 @@ $_msg = $events['events'][0]['message']['text'];
 $user = $events['events'][0]['source']['userId'];
 $user_id = pg_escape_string($user);
 $u = pg_escape_string($_msg);  
-// $check_q = pg_query($dbconn,"SELECT seqcode, sender_id ,updated_at  FROM sequentsteps  WHERE sender_id = '{$user_id}'  order by updated_at desc limit 1   ");
-//                 while ($row = pg_fetch_row($check_q)) {
-//                   echo $seqcode =  $row[0];
-//                   echo $sender = $row[2]; 
-//                 } 
+$check_q = pg_query($dbconn,"SELECT seqcode, sender_id ,updated_at  FROM sequentsteps  WHERE sender_id = '{$user_id}'  order by updated_at desc limit 1   ");
+                while ($row = pg_fetch_row($check_q)) {
+                  echo $seqcode =  $row[0];
+                  echo $sender = $row[2]; 
+                } 
 // $check_user = pg_query($dbconn,"SELECT*FROM users  WHERE $user_id  = '{$user_id}' ");
 //****************ทดสอบ
        // $d = date("D");

@@ -34,7 +34,7 @@ if (!is_null($events['events'])) {
   // if ($event['message']['text'] == "ต้องการผู้ช่วย") {
  if (strpos($_msg, 'hello') !== false || strpos($_msg, 'สวัสดี') !== false || strpos($_msg, 'ต้องการผู้ช่วย') !== false) {
       $replyToken = $event['replyToken'];
-      $text = "สวัสดีค่ะ คุณสนใจมีผู้ช่วยใช่ไหม";
+      $text = "สวัสดีค่ะ หากคุณต้องการนัดรักษาผู้ป่วยไทรอยด์เป็นพิษ ให้พิมพ์คำว่า 'ขอนัดกลืนแร่ ได้เลยค่ะ";
       $messages = [
         'type' => 'text',
         'text' => $text

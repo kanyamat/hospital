@@ -70,7 +70,7 @@ $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseq
                   echo $question = $row[1]; 
                 }   
 
-                 // $replyToken = $event['replyToken'];
+                $replyToken = $event['replyToken'];
                  // $messages = [
                  //        'type' => 'text',
                  //        'text' =>  $question

@@ -289,12 +289,32 @@ $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseq
                   echo $question = $row[1]; 
                 } 
                 $replyToken = $event['replyToken'];
-                 $messages = [
-                        'type' => 'text',
-                        'text' =>  $question
-                      ];
+                  // $messages = [
+                  //       'type' => 'text',
+                  //       'text' =>  $question
+                  //     ];
 
- 
+                  $messages = [
+                      'type' => 'template',
+                      'altText' => 'this is a confirm template',
+                      'template' => [
+                          'type' => 'confirm',
+                          'text' =>$question ,
+                          'actions' => [
+                              [
+                                  'type' => 'message',
+                                  'label' => '1',
+                                  'text' => 'ใช่'
+                              ],
+                              [
+                                  'type' => 'message',
+                                  'label' => '2',
+                                  'text' => 'ไม่ใช่'
+                              ],
+                          ]
+                      ]
+                  ] 
+$q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0008','','0000','0',NOW(),NOW())") or die(pg_errormessage());
                    
 ########################################################################################################################################################
   }else {

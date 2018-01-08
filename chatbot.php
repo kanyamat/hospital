@@ -257,7 +257,7 @@ $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseq
                   ];
 
 
-$q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0006','','0000','0',NOW(),NOW())") or die(pg_errormessage());
+$q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0007','','0000','0',NOW(),NOW())") or die(pg_errormessage());
 
  // Make a POST Request to Messaging API to reply to sender
          $url = 'https://api.line.me/v2/bot/message/reply';
@@ -289,7 +289,7 @@ $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseq
 
 
 ##################################################################################################################################################
-}elseif ($event['message']['text'] == "1" && $seqcode == "0006"  ) {
+}elseif ($event['message']['text'] == "1" && $seqcode == "0007"  ) {
                $result = pg_query($dbconn,"SELECT seqcode,question FROM sequents WHERE seqcode = '0008'");
                 while ($row = pg_fetch_row($result)) {
                   echo $seqcode =  $row[0];

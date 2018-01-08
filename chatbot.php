@@ -317,6 +317,84 @@ $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseq
 $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0008','','0000','0',NOW(),NOW())") or die(pg_errormessage());
                    
 ########################################################################################################################################################
+}elseif ($event['message']['text'] == "1" && $seqcode == "0008"  ) {
+               $result = pg_query($dbconn,"SELECT seqcode,question FROM sequents WHERE seqcode = '0009'");
+                while ($row = pg_fetch_row($result)) {
+                  echo $seqcode =  $row[0];
+                  echo $question = $row[1]; 
+                } 
+                $replyToken = $event['replyToken'];
+                  $messages = [
+                        'type' => 'text',
+                        'text' =>  $question
+                      ];
+
+                  $messages2 = [
+                        'type'=> 'image',
+                        'originalContentUrl'=> 'https://chatbothospital.herokuapp.com/images/2.1.jpg',
+                        'previewImageUrl'=> 'https://chatbothospital.herokuapp.com/images/2.1.jpg'
+                      ];
+                  $messages3 = [
+                        'type'=> 'image',
+                        'originalContentUrl'=> 'https://chatbothospital.herokuapp.com/images/2.2.jpg',
+                        'previewImageUrl'=> 'https://chatbothospital.herokuapp.com/images/2.2.jpg'
+                      ];
+
+$q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0009','','0000','0',NOW(),NOW())") or die(pg_errormessage());
+
+ // Make a POST Request to Messaging API to reply to sender
+         $url = 'https://api.line.me/v2/bot/message/reply';
+         // $url2 = 'https://api.line.me/v2/bot/message/reply';
+         $data = [
+          'replyToken' => $replyToken,
+          'messages' => [$messages,$messages2,$messages3],
+         ];
+         error_log(json_encode($data));
+         $post = json_encode($data);
+         $headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+         $ch = curl_init($url);
+         // $ch2 = curl_init($url2);
+         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+         curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+         $result = curl_exec($ch);
+         curl_close($ch);
+         echo $result . "\r\n";
+########################################################################################################################################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   }else {
     // if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
       $replyToken = $event['replyToken'];

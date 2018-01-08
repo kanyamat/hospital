@@ -249,7 +249,7 @@ $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseq
                             ],
                             [
                               'type'=> 'message',
-                              'label'=> 'ไม่แน่ใจ',
+                              'label'=> 'มีเอกสารไม่ครบ',
                               'text'=> '3'
                             ]
                         ]

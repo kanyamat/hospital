@@ -154,7 +154,7 @@ $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseq
                         'previewImageUrl'=> 'https://chatbothospital.herokuapp.com/images/1.jpg'
                       ];
 
-$q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0009','','0011','0',NOW(),NOW())") or die(pg_errormessage());
+$q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0009','','0000','0',NOW(),NOW())") or die(pg_errormessage());
 
  // Make a POST Request to Messaging API to reply to sender
          $url = 'https://api.line.me/v2/bot/message/reply';
@@ -211,8 +211,74 @@ $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseq
 $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0000','','0000','0',NOW(),NOW())") or die(pg_errormessage());
 
 ##################################################################################################################################################
+/*รับรูปมาจากข้อ1(0009)*/
+}elseif ($event['message']['text'] == "test" && $seqcode == "0009"  ) {
 
-/*รับรูปมาจากข้อ1*/
+               $result = pg_query($dbconn,"SELECT seqcode,question FROM sequents WHERE seqcode = '0007'");
+                while ($row = pg_fetch_row($result)) {
+                  echo $seqcode =  $row[0];
+                  echo $question = $row[1]; 
+                }  
+                $replyToken = $event['replyToken'];
+                 $messages = [
+                        'type' => 'text',
+                        'text' =>  $question
+                      ];
+ 
+                  $messages2 = [
+                    'type'=> 'template',
+                    'altText'=> 'This is a buttons template',
+                    'template'=> [
+                        'type'=> 'buttons',
+                        // 'thumbnailImageUrl'=> 'https://example.com/bot/images/image.jpg',
+                        // 'imageAspectRatio'=> 'rectangle',
+                        // 'imageSize'=> 'cover',
+                        // 'imageBackgroundColor'=> '#FFFFFF',
+                        //'title'=> 'Menu',
+                        'text'=> 'Please select',
+                        'actions'=> [
+                            [
+                              'type'=> 'message',
+                              'label'=> 'ใช่',
+                              'text'=> '1'
+                            ],
+                            [
+                              'type'=> 'message',
+                              'label'=> 'ไม่ใช่',
+                              'text'=> '2'
+                            ],
+                            [
+                              'type'=> 'message',
+                              'label'=> 'ไม่แน่ใจ',
+                              'text'=> '3'
+                            ]
+                        ]
+                    ]
+                  ];
+
+
+$q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0009','','0011','0',NOW(),NOW())") or die(pg_errormessage());
+
+ // Make a POST Request to Messaging API to reply to sender
+         $url = 'https://api.line.me/v2/bot/message/reply';
+         // $url2 = 'https://api.line.me/v2/bot/message/reply';
+         $data = [
+          'replyToken' => $replyToken,
+          'messages' => [$messages,$messages2],
+         ];
+         error_log(json_encode($data));
+         $post = json_encode($data);
+         $headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+         $ch = curl_init($url);
+         // $ch2 = curl_init($url2);
+         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+         curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+         $result = curl_exec($ch);
+         curl_close($ch);
+         echo $result . "\r\n";
 
 
 
@@ -222,8 +288,7 @@ $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseq
 
 
 
-
-
+##################################################################################################################################################
 
 
 

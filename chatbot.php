@@ -195,7 +195,7 @@ $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseq
 $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0003','','0000','0',NOW(),NOW())") or die(pg_errormessage());
 
 ##################################################################################################################################################
-}elseif ($event['message']['text'] == "3" && $seqcode == "0002"  ) {
+}elseif ($event['message']['text'] == "3" && $seqcode == "0002" || $seqcode == "0007"  ) {
                $result = pg_query($dbconn,"SELECT seqcode,question FROM sequents WHERE seqcode = '0005'");
                 while ($row = pg_fetch_row($result)) {
                   echo $seqcode =  $row[0];

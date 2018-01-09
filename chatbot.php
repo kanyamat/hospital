@@ -244,7 +244,7 @@ $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseq
          curl_close($ch);
          echo $result . "\r\n";
 ##################################################################################################################################################
-}elseif ($event['message']['text'] == "3" && $seqcode == "0002" || $seqcode == "0007" || $seqcode == "0010" && $event['message']['text'] == "2" && $seqcode == "0003"  ) {
+}elseif ($event['message']['text'] == "3" && $seqcode == "0002" || $seqcode == "0007" || $seqcode == "0010" || $event['message']['text'] == "2" && $seqcode == "0003"  ) {
                $result = pg_query($dbconn,"SELECT seqcode,question FROM sequents WHERE seqcode = '0005'");
                 while ($row = pg_fetch_row($result)) {
                   echo $seqcode =  $row[0];

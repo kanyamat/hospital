@@ -355,31 +355,31 @@ $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseq
                   echo $question = $row[1]; 
                 } 
                 $replyToken = $event['replyToken'];
-                  // $messages = [
-                  //       'type' => 'text',
-                  //       'text' =>  $question
-                  //     ];
-
                   $messages = [
-                      'type' => 'template',
-                      'altText' => 'this is a confirm template',
-                      'template' => [
-                          'type' => 'confirm',
-                          'text' =>$question ,
-                          'actions' => [
-                              [
-                                  'type' => 'message',
-                                  'label' => 'ใช่',
-                                  'text' => '1'
-                              ],
-                              [
-                                  'type' => 'message',
-                                  'label' => 'ไม่ใช่',
-                                  'text' => '2'
-                              ],
-                          ]
-                      ]
-                  ]; 
+                        'type' => 'text',
+                        'text' =>  $question
+                      ];
+
+                  // $messages = [
+                  //     'type' => 'template',
+                  //     'altText' => 'this is a confirm template',
+                  //     'template' => [
+                  //         'type' => 'confirm',
+                  //         'text' =>$question ,
+                  //         'actions' => [
+                  //             [
+                  //                 'type' => 'message',
+                  //                 'label' => 'ใช่',
+                  //                 'text' => '1'
+                  //             ],
+                  //             [
+                  //                 'type' => 'message',
+                  //                 'label' => 'ไม่ใช่',
+                  //                 'text' => '2'
+                  //             ],
+                  //         ]
+                  //     ]
+                  // ]; 
 $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0008','','0000','0',NOW(),NOW())") or die(pg_errormessage());
                    
 ##################################################################################################################################################

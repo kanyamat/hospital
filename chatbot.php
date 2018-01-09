@@ -191,26 +191,33 @@ $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseq
                         'type' => 'text',
                         'text' =>  $question
                       ];
-                 $messages2 = [
-                      'type' => 'template',
-                      'altText' => 'this is a confirm template',
-                      'template' => [
-                          'type' => 'confirm',
-                          'text' =>$question ,
-                          'actions' => [
-                              [
-                                  'type' => 'message',
-                                  'label' => 'ตกลง',
-                                  'text' => '1'
-                              ],
-                              [
-                                  'type' => 'message',
-                                  'label' => 'มีปัญหาเรื่องการคุมกำเนิด',
-                                  'text' => '2'
-                              ],
-                          ]
-                      ]
-                  ]; 
+
+                  $messages2 = [
+                    'type'=> 'template',
+                    'altText'=> 'This is a buttons template',
+                    'template'=> [
+                        'type'=> 'buttons',
+                        // 'thumbnailImageUrl'=> 'https://example.com/bot/images/image.jpg',
+                        // 'imageAspectRatio'=> 'rectangle',
+                        // 'imageSize'=> 'cover',
+                        // 'imageBackgroundColor'=> '#FFFFFF',
+                        //'title'=> 'Menu',
+                        'text'=> 'Please select',
+                        'actions'=> [
+                            [
+                              'type'=> 'message',
+                              'label'=> 'ตกลง',
+                              'text'=> '1'
+                            ],
+                            [
+                              'type'=> 'message',
+                              'label'=> 'มีปัญหาเรื่องการคุมกำเนิด',
+                              'text'=> '2'
+                            ]
+                        ]
+                    ]
+                  ];
+
 
 
 $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0003','','0000','0',NOW(),NOW())") or die(pg_errormessage());

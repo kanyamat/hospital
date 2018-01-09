@@ -441,10 +441,10 @@ $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseq
                   echo $question = $row[1]; 
                 } 
                 $replyToken = $event['replyToken'];
-                  // $messages = [
-                  //       'type' => 'text',
-                  //       'text' =>  $question
-                  //     ];
+                  $messages = [
+                        'type' => 'text',
+                        'text' =>  $question
+                      ];
 
                   $messages2 = [
                         'type'=> 'image',
@@ -454,7 +454,6 @@ $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseq
 
 
 $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0011','','0012','0',NOW(),NOW())") or die(pg_errormessage());
-
 
 
  // Make a POST Request to Messaging API to reply to sender
@@ -501,7 +500,7 @@ $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseq
 
 
 
-
+##################################################################################################################################################
   }else {
     // if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
       $replyToken = $event['replyToken'];

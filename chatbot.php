@@ -63,7 +63,7 @@ $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseq
 
 ##################################################################################################################################################
  
-}elseif ($event['message']['text'] == "ขอนัดกลืนแร่" && $seqcode == '0001'  ) {
+}elseif ($event['message']['text'] == "ขอนัดกลืนแร่" && $seqcode == "0001" || $seqcode == "0004" ) {
                $result = pg_query($dbconn,"SELECT seqcode,question FROM sequents WHERE seqcode = '0002'");
                 while ($row = pg_fetch_row($result)) {
                   echo $seqcode =  $row[0];
@@ -136,7 +136,7 @@ $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseq
 
 ##################################################################################################################################################
 
-}elseif ($event['message']['text'] == "1"  && $seqcode == '0002' || $event['message']['text'] == "2"  && $seqcode == '0007'   ) {
+}elseif ($event['message']['text'] == "1"  && $seqcode == "0002" || $event['message']['text'] == "2"  && $seqcode == "0007"   ) {
                $result = pg_query($dbconn,"SELECT seqcode,question FROM sequents WHERE seqcode = '0006'");
                 while ($row = pg_fetch_row($result)) {
                   echo $seqcode =  $row[0];
@@ -179,7 +179,7 @@ $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseq
 
 ##################################################################################################################################################
 
-}elseif ($event['message']['text'] == "2" && $seqcode == '0002'  ) {
+}elseif ($event['message']['text'] == "2" && $seqcode == "0002"  ) {
                $result = pg_query($dbconn,"SELECT seqcode,question FROM sequents WHERE seqcode = '0003'");
                 while ($row = pg_fetch_row($result)) {
                   echo $seqcode =  $row[0];
@@ -245,7 +245,7 @@ $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseq
          echo $result . "\r\n";
 
 ##################################################################################################################################################
-}elseif ($event['message']['text'] == "1" && $seqcode == '0003' ) {
+}elseif ($event['message']['text'] == "1" && $seqcode == "0003" ) {
                $result = pg_query($dbconn,"SELECT seqcode,question FROM sequents WHERE seqcode = '0004'");
                 while ($row = pg_fetch_row($result)) {
                   echo $seqcode =  $row[0];
@@ -258,10 +258,10 @@ $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseq
                         'text' =>  $question
                       ];
 
-$q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0004','','0002','0',NOW(),NOW())") or die(pg_errormessage());
+$q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0004','','0001','0',NOW(),NOW())") or die(pg_errormessage());
 
 ##################################################################################################################################################
-}elseif ($event['message']['text'] == "3" && $seqcode == '0002' || $seqcode == '0007' || $seqcode == '0010' || $event['message']['text'] == "2" && $seqcode == '0003'  ) {
+}elseif ($event['message']['text'] == "3" && $seqcode == "0002" || $seqcode == "0007" || $seqcode == "0010" || $event['message']['text'] == "2" && $seqcode == "0003"  ) {
                $result = pg_query($dbconn,"SELECT seqcode,question FROM sequents WHERE seqcode = '0005'");
                 while ($row = pg_fetch_row($result)) {
                   echo $seqcode =  $row[0];
@@ -278,7 +278,7 @@ $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseq
 
 ##################################################################################################################################################
 /*รับรูปมาจากข้อ1(0009)*/
-}elseif ($event['message']['text'] == "test" && $seqcode == '0006'  ) {
+}elseif ($event['message']['text'] == "test" && $seqcode == "0006"  ) {
 
                $result = pg_query($dbconn,"SELECT seqcode,question FROM sequents WHERE seqcode = '0007'");
                 while ($row = pg_fetch_row($result)) {
@@ -348,7 +348,7 @@ $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseq
 
 
 ##################################################################################################################################################
-}elseif ($event['message']['text'] == "1" && $seqcode == '0007' ) {
+}elseif ($event['message']['text'] == "1" && $seqcode == "0007" ) {
                $result = pg_query($dbconn,"SELECT seqcode,question FROM sequents WHERE seqcode = '0008'");
                 while ($row = pg_fetch_row($result)) {
                   echo $seqcode =  $row[0];
@@ -383,7 +383,7 @@ $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseq
 $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0008','','0000','0',NOW(),NOW())") or die(pg_errormessage());
                    
 ##################################################################################################################################################
-}elseif ($event['message']['text'] == "1" && $seqcode == '0008' || $event['message']['text'] == "2" && $seqcode == '0010' ) {
+}elseif ($event['message']['text'] == "1" && $seqcode == "0008" || $event['message']['text'] == "2" && $seqcode == "0010" ) {
                $result = pg_query($dbconn,"SELECT seqcode,question FROM sequents WHERE seqcode = '0009'");
                 while ($row = pg_fetch_row($result)) {
                   echo $seqcode =  $row[0];
@@ -430,7 +430,7 @@ $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseq
          echo $result . "\r\n";
 ########################################################################################################################################################
 /*รับรูปมาจากข้อ1(0009)*/
-}elseif ($event['message']['text'] == "test2" && $seqcode == '0009'  ) {
+}elseif ($event['message']['text'] == "test2" && $seqcode == "0009"  ) {
 
                $result = pg_query($dbconn,"SELECT seqcode,question FROM sequents WHERE seqcode = '0010'");
                 while ($row = pg_fetch_row($result)) {
@@ -500,7 +500,7 @@ $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseq
 
 
 #################################################################################################################################################
-}elseif ($event['message']['text'] == "1" && $seqcode == '0010'  ) {
+}elseif ($event['message']['text'] == "1" && $seqcode == "0010"  ) {
                $result = pg_query($dbconn,"SELECT seqcode,question FROM sequents WHERE seqcode = '0011'");
                 while ($row = pg_fetch_row($result)) {
                   echo $seqcode =  $row[0];

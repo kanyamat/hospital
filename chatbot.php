@@ -200,13 +200,13 @@ $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseq
                           'actions' => [
                               [
                                   'type' => 'message',
-                                  'label' => '1',
-                                  'text' => 'ตกลง'
+                                  'label' => 'ตกลง',
+                                  'text' => '1'
                               ],
                               [
                                   'type' => 'message',
-                                  'label' => '2',
-                                  'text' => 'มีปัญหาเรื่องการคุมกำเนิด '
+                                  'label' => 'มีปัญหาเรื่องการคุมกำเนิด',
+                                  'text' => '2'
                               ],
                           ]
                       ]
@@ -345,13 +345,13 @@ $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseq
                           'actions' => [
                               [
                                   'type' => 'message',
-                                  'label' => '1',
-                                  'text' => 'ใช่'
+                                  'label' => 'ใช่',
+                                  'text' => '1'
                               ],
                               [
                                   'type' => 'message',
-                                  'label' => '2',
-                                  'text' => 'ไม่ใช่'
+                                  'label' => 'ไม่ใช่',
+                                  'text' => '2'
                               ],
                           ]
                       ]

@@ -278,7 +278,7 @@ $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseq
 
 ##################################################################################################################################################
 /*รับรูปมาจากข้อ1(0006)*/
-}elseif ($event['message']['text'] == "test" && $seqcode == "0006"  ) {
+}elseif (/*$event['message']['text'] == "test"*/ isset( $ImageFile ) && ! empty( $ImageFile_size /*&& $seqcode == "0006" */ ) {
 
                $result = pg_query($dbconn,"SELECT seqcode,question FROM sequents WHERE seqcode = '0007'");
                 while ($row = pg_fetch_row($result)) {

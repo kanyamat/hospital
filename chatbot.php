@@ -575,7 +575,8 @@ $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseq
 
 
 
-elseif($event['message']['text'] == "aaa"  ){ //「ボタン」という文字が送られてきた場合
+}elseif($event['message']['text'] == "aaa"  ){ //「ボタン」という文字が送られてきた場合
+                 $replyToken = $event['replyToken'];
 
         //$userId = $event->source->userId; //userIdを取得
         //curlでRichMenuの紐付け
@@ -588,9 +589,9 @@ elseif($event['message']['text'] == "aaa"  ){ //「ボタン」という文字�
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         $response = curl_exec($ch);
         curl_close($ch);
-        } 
 
-        if($event['message']['text'] == "bbb"  ) { //「リセット」という文字が送られてきた場合
+}elseif($event['message']['text'] == "bbb"  ) { //「リセット」という文字が送られてきた場合
+                $replyToken = $event['replyToken'];
 
        // $userId = $event->source->userId; //userIdを取得
         //curlでRichMenuの解除
@@ -604,8 +605,8 @@ elseif($event['message']['text'] == "aaa"  ){ //「ボタン」という文字�
         $response = curl_exec($ch);
         curl_close($ch);
         }
-    }
-}
+//     }
+// }
 
 
 

@@ -592,37 +592,37 @@ $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseq
 ##################################################################################################################################################
   }else {
     // if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
-      $replyToken = $event['replyToken'];
-      $text = "ดิฉันไม่เข้าใจค่ะ กรุณาพิมพ์ใหม่อีกครั้งนะคะ";
-      $messages = [
-          'type' => 'text',
-          'text' => $text
-        ]; 
+      // $replyToken = $event['replyToken'];
+      // $text = "ดิฉันไม่เข้าใจค่ะ กรุณาพิมพ์ใหม่อีกครั้งนะคะ";
+      // $messages = [
+      //     'type' => 'text',
+      //     'text' => $text
+      //   ]; 
     // }
 /*หากคุณสนใจให้ดิฉันเป็นผู้ช่วยอัตโนมัติของคุณ กรุณาพิมพ์ว่า "สนใจ" ได้เลยนะคะ*/
- //   $replyToken = $event['replyToken'];
- //      $text = "หากคุณสนใจให้ดิฉันเป็นผู้ช่วยอัตโนมัติของคุณ โปรดกดยืนยันด้านล่างด้วยนะคะ";
- //          $messages = [
- //                 'type' => 'template',
- //                  'altText' => 'this is a confirm template',
- //                  'template' => [
- //                      'type' => 'confirm',
- //                      'text' => $text ,
- //                      'actions' => [
- //                          [
- //                              'type' => 'message',
- //                              'label' => 'สนใจ',
- //                              'text' => 'สนใจ'
- //                          ],
- //                          [
- //                              'type' => 'message',
- //                              'label' => 'ไม่สนใจ',
- //                              'text' => 'ไม่สนใจ'
- //                          ]
- //                      ]
- //                  ]
- //              ]; 
- // $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0004','','0005','0',NOW(),NOW())") or die(pg_errormessage());
+   $replyToken = $event['replyToken'];
+      $text = "หากคุณสนใจให้ดิฉันเป็นผู้ช่วยอัตโนมัติของคุณ โปรดกดยืนยันด้านล่างด้วยนะคะ";
+          $messages = [
+                 'type' => 'template',
+                  'altText' => 'this is a confirm template',
+                  'template' => [
+                      'type' => 'confirm',
+                      'text' => $text ,
+                      'actions' => [
+                          [
+                              'type' => 'message',
+                              'label' => 'สนใจ',
+                              'text' => 'สนใจ'
+                          ],
+                          [
+                              'type' => 'message',
+                              'label' => 'ไม่สนใจ',
+                              'text' => 'ไม่สนใจ'
+                          ]
+                      ]
+                  ]
+              ]; 
+ $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseqcode,status,created_at,updated_at )VALUES('{$user_id}','0004','','0005','0',NOW(),NOW())") or die(pg_errormessage());
        
   }
   

@@ -577,7 +577,7 @@ $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseq
 
 elseif($event['message']['text'] == "aaa"  ){ //「ボタン」という文字が送られてきた場合
 
-        $userId = $event->source->userId; //userIdを取得
+        //$userId = $event->source->userId; //userIdを取得
         //curlでRichMenuの紐付け
         $url_richMenu= "https://api.line.me/v2/bot/user/".$userId."/richmenu/".$richMenuId;
         $ch = curl_init();
@@ -592,7 +592,7 @@ elseif($event['message']['text'] == "aaa"  ){ //「ボタン」という文字�
 
         if($event['message']['text'] == "bbb"  ) { //「リセット」という文字が送られてきた場合
 
-        $userId = $event->source->userId; //userIdを取得
+       // $userId = $event->source->userId; //userIdを取得
         //curlでRichMenuの解除
         $url_richMenu= "https://api.line.me/v2/bot/user/".$userId."/richmenu";
         $ch = curl_init();

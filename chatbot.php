@@ -12,6 +12,10 @@ $content = file_get_contents('php://input');
 $events = json_decode($content, true);
 //$curr_years = date("Y");
 //$curr_y = ($curr_years+ 543);
+
+
+
+
 $_msg = $events['events'][0]['message']['text'];
 $user = $events['events'][0]['source']['userId'];
 $user_id = pg_escape_string($user);
@@ -571,7 +575,37 @@ $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseq
 
 
 
+elseif($event['message']['text'] == "aaa"  ){ //「ボタン」という文字が送られてきた場合
 
+        $userId = $event->source->userId; //userIdを取得
+        //curlでRichMenuの紐付け
+        $url_richMenu= "https://api.line.me/v2/bot/user/".$userId."/richmenu/".$richMenuId;
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url_richMenu);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: Bearer '.$accessToken));
+        curl_setopt($ch,CURLOPT_HEADER,TRUE);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        $response = curl_exec($ch);
+        curl_close($ch);
+        } 
+
+        if($event['message']['text'] == "bbb"  ) { //「リセット」という文字が送られてきた場合
+
+        $userId = $event->source->userId; //userIdを取得
+        //curlでRichMenuの解除
+        $url_richMenu= "https://api.line.me/v2/bot/user/".$userId."/richmenu";
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url_richMenu);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: Bearer '.$accessToken));
+        curl_setopt($ch,CURLOPT_HEADER,TRUE);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        $response = curl_exec($ch);
+        curl_close($ch);
+        }
+    }
+}
 
 
 

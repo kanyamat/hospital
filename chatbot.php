@@ -8,7 +8,8 @@ $replyToken  = $events['events'][0]['replyToken'];
 $response = $this->bot->replyText($replyToken, 'hello!');
 //$response = $bot->replyText('<reply token>', 'hello!');
 
-
+$outputText = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("text");
+$bot->replyMessage($event->getReplyToken(), $outputText);
 
 
 ?>

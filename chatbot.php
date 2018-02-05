@@ -575,37 +575,37 @@ $q = pg_exec($dbconn, "INSERT INTO sequentsteps(sender_id,seqcode,answer,nextseq
 
 
 
-}elseif($event['message']['text'] == "aaa"  ){ //「ボタン」という文字が送られてきた場合
-                 $replyToken = $event['replyToken'];
+// }elseif($event['message']['text'] == "aaa"  ){ //「ボタン」という文字が送られてきた場合
+//                  $replyToken = $event['replyToken'];
 
-        //$userId = $event->source->userId; //userIdを取得
-        //curlでRichMenuの紐付け
+//         //$userId = $event->source->userId; //userIdを取得
+//         //curlでRichMenuの紐付け
 
-        //https:api.line.me/v2/bot/richmenu;
-        $url_richMenu= 'https://api.line.me/v2/bot/user/'.$user_id.'/richmenu/'/*.$richMenuId*/;
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url_richMenu);
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: Bearer '.$accessToken));
-        curl_setopt($ch,CURLOPT_HEADER,TRUE);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        $response = curl_exec($ch);
-        curl_close($ch);
+//         //https:api.line.me/v2/bot/richmenu;
+//         $url_richMenu= 'https://api.line.me/v2/bot/user/'.$user_id.'/richmenu/'/*.$richMenuId*/;
+//         $ch = curl_init();
+//         curl_setopt($ch, CURLOPT_URL, $url_richMenu);
+//         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+//         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: Bearer '.$accessToken));
+//         curl_setopt($ch,CURLOPT_HEADER,TRUE);
+//         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+//         $response = curl_exec($ch);
+//         curl_close($ch);
 
-}elseif($event['message']['text'] == "bbb"  ) { //「リセット」という文字が送られてきた場合
-                $replyToken = $event['replyToken'];
+// }elseif($event['message']['text'] == "bbb"  ) { //「リセット」という文字が送られてきた場合
+//                 $replyToken = $event['replyToken'];
 
-       // $userId = $event->source->userId; //userIdを取得
-        //curlでRichMenuの解除
-        $url_richMenu= 'https://api.line.me/v2/bot/user/'.$user_id.'/richmenu';
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url_richMenu);
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: Bearer '.$accessToken));
-        curl_setopt($ch,CURLOPT_HEADER,TRUE);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        $response = curl_exec($ch);
-        curl_close($ch);
+//        // $userId = $event->source->userId; //userIdを取得
+//         //curlでRichMenuの解除
+//         $url_richMenu= 'https://api.line.me/v2/bot/user/'.$user_id.'/richmenu';
+//         $ch = curl_init();
+//         curl_setopt($ch, CURLOPT_URL, $url_richMenu);
+//         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
+//         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: Bearer '.$accessToken));
+//         curl_setopt($ch,CURLOPT_HEADER,TRUE);
+//         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+//         $response = curl_exec($ch);
+//         curl_close($ch);
         // }
 //     }
 // }

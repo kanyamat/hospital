@@ -49,8 +49,9 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselTemplateBuilder;
 use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuilder;
  
 // เชื่อมต่อกับ LINE Messaging API
-$httpClient = new CurlHTTPClient('pA2wlxsD5Qgoxvknv3vCo9OY10G0wL79gsYiZ2LFdwaAkPLpK6gFTCanZCeOa19aMo9zKsd0fAFqoUb+8E0j1FL6tioXbgrXusCgfacGVtwPnimvmV9/DtvbZpGEAbHr2b/FWZOV/T6ia8Q6dMFwOwdB04t89/1O/w1cDnyilFU=');
-$bot = new LINEBot($httpClient, array('channelSecret' => '1d20278bbe15f167b3245df7a1413d2e'));
+$httpClient = new CurlHTTPClient('MLNeS6mEmx8YyE/yMgF59o942+co8EXx5k+t5Ebi+87TtIPM3snM+ZYJqGDiPXU6Mo9zKsd0fAFqoUb+8E0j1FL6tioXbgrXusCgfacGVtzCEOq8SKV/al1OTHNpYzocI/oEfbWOOW63g3CiC5NjcAdB04t89/1O/w1cDnyilFU=');
+$bot = new LINEBot($httpClient, array('channelSecret' => '8158c35051d16cf135e81d47228519ea
+'));
  
 // คำสั่งรอรับการส่งค่ามาของ LINE Messaging API
 $content = file_get_contents('php://input');
